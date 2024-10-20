@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Theme Toggle</title>
+  <style>
+    /* Default light theme */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: white;
+      color: black;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .dark-mode {
+      background-color: #333;
+      color: white;
+    }
+
+    .theme-status {
+      margin-top: 20px;
+    }
+
+    .toggle-button {
+      padding: 10px 20px;
+      cursor: pointer;
+      background-color: #008CBA;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Theme Toggle Feature</h1>
+
+  <button id="toggleButton" class="toggle-button">Switch to Dark Mode</button>
+  
+  <div class="theme-status" id="themeStatus">Light Mode</div>
+
+  <script>
+    // Get elements
+    const body = document.body;
+    const toggleButton = document.getElementById('toggleButton');
+    const themeStatus = document.getElementById('themeStatus');
+
+    // Event listener for button click
+    toggleButton.addEventListener('click', function() {
+      // Toggle the 'dark-mode' class on the body
+      body.classList.toggle('dark-mode');
+
+      // Update button text and theme status
+      if (body.classList.contains('dark-mode')) {
+        toggleButton.textContent = 'Switch to Light Mode';
+        themeStatus.textContent = 'Dark Mode';
+      } else {
+        toggleButton.textContent = 'Switch to Dark Mode';
+        themeStatus.textContent = 'Light Mode';
+      }
+    });
+  </script>
+
+</body>
+</html>

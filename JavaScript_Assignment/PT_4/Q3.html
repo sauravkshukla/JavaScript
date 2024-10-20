@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Web Counter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .counter {
+      font-size: 48px;
+      margin: 20px 0;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 24px;
+      cursor: pointer;
+      border: 1px solid #333;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background-color: #ddd;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Simple Counter</h1>
+  
+  <div class="counter" id="counter">0</div>
+  
+  <div class="buttons">
+    <button id="incrementButton">+</button>
+    <button id="decrementButton">-</button>
+  </div>
+
+  <script>
+    let counterValue = 0; // Initial counter value
+    const counterDisplay = document.getElementById('counter');
+    const incrementButton = document.getElementById('incrementButton');
+    const decrementButton = document.getElementById('decrementButton');
+
+    // Update the counter display
+    function updateCounterDisplay() {
+      counterDisplay.textContent = counterValue;
+    }
+
+    // Increment button click event
+    incrementButton.addEventListener('click', function() {
+      counterValue += 1;
+      updateCounterDisplay();
+    });
+
+    // Decrement button click event
+    decrementButton.addEventListener('click', function() {
+      if (counterValue > 0) {
+        counterValue -= 1;
+        updateCounterDisplay();
+      } else {
+        alert('Counter cannot go below zero!');
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dropdown Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 50px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    select {
+      padding: 10px;
+      width: 200px;
+      margin: 20px 0;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 id="dropdownHeading">Select an Option</h1>
+
+  <select id="dropdownMenu">
+    <option value="" disabled selected>--Choose an option--</option>
+  </select>
+
+  <script>
+    // Array of options
+    const options = ['Javascript', 'Java', 'Python', 'C++', 'Html'];
+
+    // Get dropdown element
+    const dropdownMenu = document.getElementById('dropdownMenu');
+
+    // Loop through the array and add each option to the dropdown
+    options.forEach(function(optionText) {
+      const option = document.createElement('option');
+      option.value = optionText.toLowerCase().replace(/\s+/g, '-'); // Setting a value attribute
+      option.textContent = optionText;
+      dropdownMenu.appendChild(option);
+    });
+  </script>
+
+</body>
+</html>

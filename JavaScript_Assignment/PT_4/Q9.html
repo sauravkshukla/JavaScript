@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login and Logout with LocalStorage</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 50px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      margin: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #loginBtn {
+      background-color: #28a745;
+      color: white;
+    }
+
+    #logoutBtn {
+      background-color: #dc3545;
+      color: white;
+    }
+
+    h1 {
+      margin-top: 30px;
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+
+  <button id="loginBtn">Login</button>
+  <button id="logoutBtn">Logout</button>
+
+  <h1 id="statusHeading">User is not logged in</h1>
+
+  <script>
+    const loginBtn = document.getElementById('loginBtn');
+    const logoutBtn = document.getElementById('logoutBtn');
+    const statusHeading = document.getElementById('statusHeading');
+
+    // Function to check authentication status
+    function updateStatus() {
+      const isLoggedIn = localStorage.getItem('isLoggedIn');
+      if (isLoggedIn === 'true') {
+        statusHeading.textContent = 'User is logged in';
+      } else {
+        statusHeading.textContent = 'User is not logged in';
+      }
+    }
+
+    // Login button event listener
+    loginBtn.addEventListener('click', function() {
+      localStorage.setItem('isLoggedIn', 'true'); // Store login status in localStorage
+      updateStatus(); // Update the heading
+    });
+
+    // Logout button event listener
+    logoutBtn.addEventListener('click', function() {
+      localStorage.removeItem('isLoggedIn'); // Remove login status from localStorage
+      updateStatus(); // Update the heading
+    });
+
+    // Check authentication status on page load
+    updateStatus();
+  </script>
+
+</body>
+</html>

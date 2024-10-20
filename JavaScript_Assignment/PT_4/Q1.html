@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Picture Upload</title>
+  <style>
+    .image-preview {
+      margin-top: 20px;
+      width: 150px;
+      height: 150px;
+      border: 2px solid #ddd;
+      display: none;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Upload Profile Picture</h1>
+  <h2>Your Profile Picture</h2>
+  
+  <input type="file" id="imageInput" accept="image/*">
+  
+  <div>
+    <img id="imagePreview" class="image-preview" alt="Image Preview">
+  </div>
+
+  <script>
+    document.getElementById('imageInput').addEventListener('change', function(event) {
+      const file = event.target.files[0]; // Get the selected file
+      const imagePreview = document.getElementById('imagePreview');
+      
+      if (file && file.type.startsWith('image/')) {
+        const reader = new FileReader();
+        
+        reader.onload = function(e) {
+          imagePreview.src = e.target.result; // Set the image source to the file URL
+          imagePreview.style.display = 'block'; // Display the preview
+        };
+        
+        reader.readAsDataURL(file); // Read the file as a data URL
+      } else {
+        imagePreview.style.display = 'none'; // Hide preview if not an image
+      }
+    });
+  </script>
+
+</body>
+</html>

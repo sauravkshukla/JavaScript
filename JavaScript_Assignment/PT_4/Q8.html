@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Clock with Background Color</title>
+  <style>
+    body, html {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #000000;
+      color: white;
+      font-family: Arial, sans-serif;
+      font-size: 48px;
+    }
+
+    .clock {
+      text-align: center;
+    }
+
+    .background-code {
+      font-size: 24px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="clock">
+    <div id="timeDisplay"></div>
+    <div class="background-code">Hex Code: <span id="hexCode"></span></div>
+  </div>
+
+  <script>
+    function updateTime() {
+      const now = new Date();
+
+      // Get hours, minutes, and seconds
+      let hours = now.getHours();
+      let minutes = now.getMinutes();
+      let seconds = now.getSeconds();
+
+      // Format time with two digits
+      hours = hours < 10 ? '0' + hours : hours;
+      minutes = minutes < 10 ? '0' + minutes : minutes;
+      seconds = seconds < 10 ? '0' + seconds : seconds;
+
+      // Display the time
+      const timeString = `${hours}:${minutes}:${seconds}`;
+      document.getElementById('timeDisplay').textContent = timeString;
+
+      // Create the hex code from time
+      const hexCode = `#${hours}${minutes}${seconds}`;
+      document.getElementById('hexCode').textContent = hexCode;
+
+      // Change the background color
+      document.body.style.backgroundColor = hexCode;
+    }
+
+    // Update time every second
+    setInterval(updateTime, 1000);
+
+    // Initial call to display time immediately on page load
+    updateTime();
+  </script>
+
+</body>
+</html>

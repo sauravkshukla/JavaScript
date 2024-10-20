@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Toggle</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 50px;
+    }
+
+    img {
+      max-width: 300px;
+      margin: 20px 0;
+      display: block;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 id="imageState">Image is visible</h1>
+
+  <img id="toggleImage" src="saurav.jpg" alt="Saurav Image">
+
+  <button id="toggleButton">Hide Image</button>
+
+  <script>
+    const toggleButton = document.getElementById('toggleButton');
+    const toggleImage = document.getElementById('toggleImage');
+    const imageState = document.getElementById('imageState');
+
+    // Button click event listener
+    toggleButton.addEventListener('click', function() {
+      if (toggleImage.style.display === 'none') {
+        toggleImage.style.display = 'block'; // Show the image
+        imageState.textContent = 'Image is visible'; // Update heading
+        toggleButton.textContent = 'Hide Image'; // Update button text
+      } else {
+        toggleImage.style.display = 'none'; // Hide the image
+        imageState.textContent = 'Image is hidden'; // Update heading
+        toggleButton.textContent = 'Show Image'; // Update button text
+      }
+    });
+  </script>
+
+</body>
+</html>
